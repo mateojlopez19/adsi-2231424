@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic selector</title>
+    <style>
+        /* universal */
+        * {
+            border: 1px dotted red;
+        }
+
+        /* type or label */
+        h3 {
+            background-color: gold;
+        }
+
+        /* nested */
+        h3 em {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>element 1</li>
+        <li>element 2</li>
+        <li>element 3</li>
+        <li>element 4</li>
+        <li>element 5</li>
+        <li>element 6</li>
+        <li>element 7</li>
+        <li>element 8</li>
+        <li>element 9</li>
+        <li>element 10</li>
+    </ul>
+
+    <section>
+        <h3> *<em> universal selector</em> </h3>
+    </section>
+
+    <section>
+        <h3>h3 (selector type or label)</h3>
+    </section>
+    <section><h3>h3 em <em>(nested selector)</em></h3></section>
+
+    
+</body>
+</html>

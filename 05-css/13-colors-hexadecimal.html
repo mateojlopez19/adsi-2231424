@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors: RGB porcentage</title>
+    <style>
+        div.row {
+            margin: 0px auto;
+        }
+        /* -------------------Centrado (ANCHO)--------------------------- */
+        div.row1,
+        div.row2 {
+            width: 600px;
+        }
+        div.row3 {
+            width: 480px;
+        }
+        div.row4 {
+            width: 360px;
+        }
+        /* -----------------caracteristcas de cajas -------------------------*/
+        div.box {
+            background-color: rgb(50%, 50%, 50%);
+            display: inline-block;
+            font: 0.9em arial;
+            height: 120px;
+            line-height: 12em;
+            margin-left: -4px;
+            text-align: center;
+            width: 120px;
+        }
+        /* ---------------------texto de los extremos -------------------------*/
+        .txt-white {
+            color: #ffffff;
+        }
+        /* ---------------row row -----------------------------*/
+        div.maroon { background-color: #800000; }
+        div.red { background-color: #ff0000; }
+        div.orange { background-color: #ffa600; }
+        div.yellow { background-color: #ffff00; } 
+        div.olive { background-color: #808000; }
+        /* ---------------------row row2----------------------------------- */
+        div.purple { background-color: #ffa600; }
+        div.fuchsia { background-color: #ff00ff; }
+        div.white { background-color: #ffffff; }
+        div.lime { background-color: #00ff00; }
+        div.green { background-color: #00c800; }
+        /* -------------------row row3----------------------------------- */
+        div.navy { background-color: #000080; }
+        div.blue { background-color: #0000ff; }
+        div.aqua { background-color: #00ffff; }
+        div.teal { background-color: #008080; }
+        /*------------------------ row row4----------------------------------- */
+        div.black { background-color: #000000; }
+        div.white { background-color: #ffffff; }
+        div.gray { background-color: #808080; }
+    </style>
+</head>
+
+<body>
+  <!--   div.row.row3>div.box.color{color}*4 -->
+    <div class="row row1">
+        <div class="box maroon txt-white">#800000</div>
+        <div class="box red">#ff0000</div>
+        <div class="box orange">  #ffa600</div>
+        <div class="box yellow"> #ffff00</div>
+        <div class="box olive txt-white"> #808000</div>
+    </div>
+    <div class="row row2">
+        <div class="box purple txt-white">#ffa600</div>
+        <div class="box fuchsia">#ff00ff</div>
+        <div class="box white"> #ffffff</div>
+        <div class="box lime"> #00ff00</div>
+        <div class="box green txt-white">#00c800</div>
+    </div>
+    <div class="row row3">
+        <div class="box navy txt-white">#000080</div>
+        <div class="box blue">  #0000ff</div>
+        <div class="box aqua">#00ffff</div>
+        <div class="box teal txt-white">#008080</div>
+    </div>
+    <div class="row row4">
+        <div class="box black txt-white"> #000000</div>
+        <div class="box white"> #ffffff</div>
+        <div class="box gray txt-white">#808080</div>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Ciclos (While)</title>
+</head>
+<body>
+	<main class="container">
+		<section class="row mt-5">
+			<div class="col-md-8 offset-md-2 text-center">
+				<h1 class="text-dark">Ciclos (While)</h1>
+				<hr>
+				<nav>
+			  		<ul class="pagination justify-content-center">
+				    	<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+						<?php 
+							$i = 1;
+							while($i <= 10) {
+								echo '<li class="page-item"><a class="page-link" href="#">'.$i.'</a></li>';
+								$i++;
+							}
+						?>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			  	</ul>
+			  </nav>
+				
+			</div>
+		</section>
+	</main>
+
+</body>
+</html>

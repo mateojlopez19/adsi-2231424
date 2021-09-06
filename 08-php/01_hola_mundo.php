@@ -3,8 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hola Mundo</title>
-	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+
 </head>
 <body>
 	<main class="container">

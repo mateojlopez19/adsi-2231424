@@ -6,6 +6,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge Events Time</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        figure.stage{
+            position: relative;
+            margin: 20px auto;
+            Width:926px;
+            Height:428px;
+        }
+        figure.stage01{
+            background: transparent url(imgs/zelda-game/cuerpo.png) no-repeat center;
+        }
+        figure.stage01 img.logo{
+            left: 31px;
+            top: 24px;
+            position: absolute;
+        }
+        figure.stage01 img.letra{
+            left: 35px;
+            top: 30px;
+            position: absolute;
+        }
+        figure.stage01 img.logo2{
+            left: 303px;
+            top: 24px;
+            position: absolute;
+        }
+        figure.stage01 img.how{
+            height: 111px;
+            width: 241px;
+            left: 320px;
+            top: 250px;
+            position: absolute;
+        }
+
+        figure.stage01 button#btn_play {
+            background: url(imgs/zelda-game/boton.png) no-repeat center;
+            border: none;
+            height: 60px;
+            width: 130px;
+            left: 726px;
+            top: 66px;
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.1s ease-in;
+        }
+        figure.stage01 button#btn_play:hover {
+            transform: scale(1.07);
+        }
+        /* parte 2 */
+        figure.stage02 {
+            background: transparent url(imgs/zelda-game/cuerpo.png) no-repeat center;
+        }
+        figure.stage02 img.mapa{
+            top: 24px;
+            left: 31px;
+            position: absolute;
+        }
+        figure.stage02 img.panel{
+            height: 380px;
+            width: 140px;
+            position: absolute;
+            left: 29px;
+            top: 24px;
+            border: solid white;
+        }
+        figure.stage02 div.info {
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: 400;
+            font-size: 30px;
+            position: absolute;
+            text-align: center;
+            width: 30px;
+        }
+        figure.stage02 div#tiempo {
+            left: 87px;
+            top: 130px;
+        }
+        figure.stage02 div#puntos {
+            left: 85px;
+            top: 330px;
+        }
+        figure.stage02 div.link {
+            background: url(imgs/zelda-game/link2.png) no-repeat center;
+            background-size: contain;
+            height: 70px;
+            width: 68px;
+            position: absolute;
+            left: 785px;
+            top: 338px;
+        }
+        
+        figure.stage.hide {
+            display: none;
+        }
+
+    </style>
 </head>
 <body>
     <main>
@@ -13,13 +110,105 @@
             <h1> <span><a href="index.html">&larr;</a></span> Challenge Events Time</h1>
         </header>
         <section>
-
+                <figure class="stage stage01 animate__animated animate__backInDown">
+                    <img src="imgs/zelda-game/image 1.png" class="logo">
+                    <img src="imgs/zelda-game/The Legend of zelda.png" class="letra">
+                    <img src="imgs/zelda-game/image 2.png" class="logo2">
+                    <img src="imgs/zelda-game/How to play.png" class="how">
+                    <button id="btn_play"></button>
+                </figure>
+                <figure class="stage stage02 hide animate__animated animate__zoomIn">
+                    <img src="imgs/zelda-game/mapa.png" class="mapa">
+                    <img src="imgs/zelda-game/barra lateral.png" class="panel">
+                    <div class="link"></div>
+                    <div class="info" id="tiempo">60</div>
+                    <div class="info" id="puntos">0</div>
+                </figure>
         </section>
     </main>
 
     <script>
+        const btnPlay  = document.getElementById('btn_play');
+        const stage01  = document.querySelector('figure.stage01');
+        const stage02  = document.querySelector('figure.stage02');
+        const link = document.querySelector('div.link');
 
+        var points     = document.getElementById('puntos');
+        var time       = document.getElementById('tiempo');
+
+        // Object
+        const game = {
+            // Attributes
+            gpoints: 0,
+            gtime: 60,
+            gpos: 785,
+            ypos: -785,
+            // Methods
+            zelda: function() {
+                this.changeStage();  
+                this.countDownTime(); 
+            },
+            changeStage: function() {
+                stage01.classList.add('animate__zoomOut');
+                setTimeout(function() {
+                    stage01.classList.add('hide');
+                    stage02.classList.remove('hide');
+                },500);
+            },
+            countDownTime: function() {
+                let seti = setInterval(function() {
+                    if (game.gtime %10 == 0) {
+                        if (game.gtime != 60) {
+                            game.gpoints += 10;
+                            points.innerText = game.gpoints;
+                        }
+                    }
+                    if (game.gtime < 1) {
+                        ///alert('The Game is Over');
+                        time.innerText = '0';
+                        clearInterval(seti);
+                    } else {
+                        time.innerText = parseInt(game.gtime--);
+                    }
+                }, 1000);
+            }
+        }
+        // Events
+        btn_play.onclick = function() {
+            game.zelda();
+        }
+        document.onkeydown = function(event) {
+            //console.log(event.keyCode);
+            // left (37)
+            /* if(event.keyCode == 37) {
+                if ( game.gpos > 260) {
+                    game.gpos -= 180;
+                    link.style.left = game.gpos + 'px';
+                }
+            }
+            // right (39)
+            if(event.keyCode == 39) {
+                if ( game.gpos < 785){
+                    game.gpos += 180;
+                    link.style.left = game.gpos + 'px';
+                }
+            } */
+            // up (38)
+            if(event.keyCode == 38) {
+                if ( game.ypos > -2){
+                    game.ypos += 80;
+                    link.style.top = game.ypos + 'px';
+                }
+            }
+            // down (40)
+            if(event.keyCode == 40) {
+                if ( game.ypos < 785){
+                    game.ypos -= 80;
+                    link.style.top = game.ypos + 'px';
+                }
+            }
+        }
     </script>
-    
+     
 </body>
 </html>

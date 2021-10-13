@@ -141,8 +141,8 @@
             // Attributes
             gpoints: 0,
             gtime: 60,
-            gpos: 785,
-            ypos: -785,
+            gpos: 780,
+            ypos: 335,
             // Methods
             zelda: function() {
                 this.changeStage();  
@@ -178,32 +178,32 @@
             game.zelda();
         }
         document.onkeydown = function(event) {
-            //console.log(event.keyCode);
+            console.log(event.keyCode);
             // left (37)
-            /* if(event.keyCode == 37) {
+            if(event.keyCode == 37) {
                 if ( game.gpos > 260) {
                     game.gpos -= 180;
-                    link.style.left = game.gpos + 'px';
+                    link.style.left = game["gpos"] + 'px';
                 }
             }
             // right (39)
             if(event.keyCode == 39) {
-                if ( game.gpos < 785){
+                if ( game.gpos < 780){
                     game.gpos += 180;
                     link.style.left = game.gpos + 'px';
-                }
-            } */
-            // up (38)
-            if(event.keyCode == 38) {
-                if ( game.ypos > -2){
-                    game.ypos += 80;
-                    link.style.top = game.ypos + 'px';
                 }
             }
             // down (40)
             if(event.keyCode == 40) {
-                if ( game.ypos < 785){
-                    game.ypos -= 80;
+                if ( game.ypos < 335){
+                    game.ypos += 103;
+                    link.style.top = game.ypos + 'px';
+                }
+            }
+            // up (38)
+            if(event.keyCode == 38) {
+                if ( game.ypos > 35){
+                    game.ypos -= 103;
                     link.style.top = game.ypos + 'px';
                 }
             }

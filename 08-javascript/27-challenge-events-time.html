@@ -7,7 +7,6 @@
     <title>Challenge Events Time</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         figure.stage{
             position: relative;
@@ -191,7 +190,7 @@
                         })
                         setInterval(function(){   
                             window.location.reload();
-                        },2000);
+                        },3000);
 
                     } else {
                         time.innerText = parseInt(game.gtime--);
@@ -286,6 +285,6 @@
         }
         
     </script>
-     
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

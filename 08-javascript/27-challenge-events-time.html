@@ -160,7 +160,7 @@
         const game = {
             // Attributes
             gpoints: 0,
-            gtime: 30,
+            gtime: 5,
             gpos: 780,
             ypos: 335,
 
@@ -180,24 +180,18 @@
             },
             countDownTime: function() {
                 let seti = setInterval(function() {
-                    /* if (game.gtime %10 == 0) {
-                         if (game.gtime != 30) {
-                            game.gpoints += 10;
-                            points.innerText = game.gpoints;
-                        } 
-                    } */
                     if (game.gtime < 1) {
                         time.innerText = '0';
+                        clearInterval(seti);
                         swal({
                             title: "Good job!",
                             text: "Your score is: "+ game.gpoints,
                             icon: "success",
-                            buttons: false,
+                            button: true,
                         })
-                        clearInterval(seti);
                         setInterval(function(){   
-                            reiniciar();
-                        },4000);
+                            window.location.reload();
+                        },2000);
 
                     } else {
                         time.innerText = parseInt(game.gtime--);

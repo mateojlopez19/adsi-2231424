@@ -188,13 +188,13 @@
                     } */
                     if (game.gtime < 1) {
                         time.innerText = '0';
-                        clearInterval(seti);
                         swal({
                             title: "Good job!",
                             text: "Your score is: "+ game.gpoints,
                             icon: "success",
                             buttons: false,
                         })
+                        clearInterval(seti);
                         setInterval(function(){   
                             reiniciar();
                         },4000);

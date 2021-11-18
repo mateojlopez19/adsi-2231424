@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        h2.title-game {
+            background: transparent url(images/juego-memoria/logojuego.png) no-repeat 0px center;
+            color: #1a1f49;
+            font-size: 40px;
+            font-family: Poppins;
+            text-align: center;
+            margin: 0 auto;
+            text-indent: 30px;
+            width: 520px;
+        }
+        figure {
+            border: solid 1px red;
+            border-radius: 20px;
+            background-color: rgb(119, 110, 110);
+            margin: 0px auto;
+            width: 780px;
+        }
+        div.moves,
+        div.time {
+            color: #1a1f49;;
+            display: inline-block;
+            font-size: 24px;
+            font-family: Poppins;
+            padding-left: 50px;
+        }
+        div.moves {
+            background: transparent url(images/juego-memoria/icon-moves.svg) no-repeat 0px center;
+            margin-top: 40px;
+            margin-right: 80px;
+            margin-left: 140px;
+        }
+        div.time {
+            background: transparent url(images/juego-memoria/icon-time.svg) no-repeat 0px center;
+            margin-bottom: 20px;
+        }
+        div.tarjeta {
+            display: inline-block;
+            height: 194px;
+            margin: 13px;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+            width: 164px;
+        }
+        div.tarjeta.voltea {
+            transform: rotateY(180deg);
+        }
+        div.cara-tarjeta {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        div.cara-tarjeta-frente {
+            background: transparent url(images/juego-memoria/logo\ federacion.png) no-repeat center;
+        }
+        div.cara-tarjeta-atras {
+            transform: rotateY(180deg);
+        }
+        div.tarjeta01 div.cara-tarjeta-atras {
+            background: transparent url(images/juego-memoria/card\ \ barrios.png) no-repeat center;
+        }
+        div.tarjeta02 div.cara-tarjeta-atras {
+            background: transparent url(images/juego-memoria/card\ falcao.png) no-repeat center;
+        }
+        div.tarjeta03 div.cara-tarjeta-atras {
+            background: transparent url(images/juego-memoria/card\ ospina.png) no-repeat center;
+        }
+        div.tarjeta04 div.cara-tarjeta-atras {
+            background: transparent url(images/juego-memoria/card\ cuadrado.png) no-repeat center;
+        }
+        div.tarjeta05 div.cara-tarjeta-atras {
+            background: transparent url(images/juego-memoria/card\ james.png) no-repeat center;
+        }
+        div.tarjeta06 div.cara-tarjeta-atras {
+            background: transparent url(images/juego-memoria/card\ ldiaz.png) no-repeat center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1> <span><a href="index.html">&larr;</a></span> Memory Game</h1>
+        </header>
+        <section>
+            <h2 class="title-game">Juego De Memoria</h2>
+            <figure>
+                <div class="moves">1 movimiento</div>
+                <div class="time">50 segundos</div>
+                <br>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>
+                <div class="tarjeta">
+                    <div class="cara-tarjeta cara-tarjeta-frente"></div>
+                    <div class="cara-tarjeta cara-tarjeta-atras"></div>
+                </div>   
+            </figure>
+        </section>
+    </main>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $tarjetas  = document.querySelectorAll('div.tarjeta');
+            $arraytarjeta = ['tarjeta01', 'tarjeta01', 'tarjeta02', 'tarjeta02',
+                      'tarjeta03', 'tarjeta03', 'tarjeta04', 'tarjeta04',
+                      'tarjeta05', 'tarjeta05', 'tarjeta06', 'tarjeta06'];
+
+            $('.tarjeta').click(function() {
+                $(this).toggleClass('voltea');
+            });
+
+            const randomCard = () => {
+                for (let i = 0; i < $tarjetas.length; i++) {
+                    $($tarjetas[i]).addClass(randomBg());
+                }
+            }
+
+            const randomBg = () => {
+                $rn = Math.floor(Math.random() * $arraytarjeta.length );
+                $bg = $arraytarjeta[$rn];
+                $arraytarjeta.splice($rn,1);
+                return $bg;
+            }
+
+            randomCard();
+        });
+    </script>
+    
+</body>
+</html>

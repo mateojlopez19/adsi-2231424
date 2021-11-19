@@ -14,7 +14,7 @@
             background: transparent url(images/juego-memoria/logojuego.png) no-repeat 0px center;
             color:  #1a1f49;
             font-size: 60px;
-            font-family: poppins;
+            font-family: poppins, sans-serif;
             text-align: center;
             margin: 0 auto;
             text-indent: 60px;
@@ -27,13 +27,19 @@
             background: url(images/juego-memoria/fondo-cesped.png);
         }
         div.moves,
-        div.time,
-        div.fmoves,
-        div.ftime {
+        div.time{
             color: whitesmoke;
             display: inline-block;
             font-size: 24px;
-            font-family: Poppins;
+            font-family: Poppins, sans-serif;
+            padding-left: 50px;
+        }
+        div.fmoves,
+        div.ftime {
+            color:  #1a1f49;
+            display: inline-block;
+            font-size: 24px;
+            font-family: Poppins, sans-serif;
             padding-left: 50px;
         }
         div.moves {
@@ -134,15 +140,15 @@
             margin: 0px auto;
             display: block;
             padding: 14px;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: poppins, sans-serif;
             font-size: 1.2rem;
-            color: #838383;
+            color: #1a1f49;
             outline: none;
             border-radius: 10px;
             text-align: center;
         }
         div.modal div.data button{
-            background-color: #838383;
+            background-color: #1a1f49;
             margin: 0px auto;
             display: block;
             border: none;
@@ -150,7 +156,7 @@
             color: #fff;
             padding: 18px;
             text-align: center;
-            font-family: poppins;
+            font-family: poppins, sans-serif;
             margin-top: 20px;
             cursor: pointer;
             width: 70px;
@@ -165,7 +171,7 @@
         <section>
             <div class="modal hide">
                 <div class="data">
-                    <h4>well Done¡</h4>
+                    <h4>Your Score Is:</h4>
                     <hr>
                     <div class="fmoves">0 moves</div>
                     <div class="ftime">0 seconds</div>

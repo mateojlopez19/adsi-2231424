@@ -13,24 +13,24 @@
         h2.title-game {
             background: transparent url(images/juego-memoria/logojuego.png) no-repeat 0px center;
             color:  #1a1f49;
-            font-size: 40px;
+            font-size: 60px;
             font-family: poppins;
             text-align: center;
             margin: 0 auto;
-            text-indent: 30px;
-            width: 500px;
+            text-indent: 60px;
+            width: 600px;
         }
         figure {
             margin: 0px auto;
             border-radius: 20px;
             width: 780px;
-            background: rgba(58, 56, 56, 0.808);
+            background: url(images/juego-memoria/fondo-cesped.png);
         }
         div.moves,
         div.time,
         div.fmoves,
         div.ftime {
-            color: #838383;
+            color: whitesmoke;
             display: inline-block;
             font-size: 24px;
             font-family: Poppins;
@@ -38,7 +38,7 @@
         }
         div.moves {
             background: transparent url(images/juego-memoria/icon-moves.svg) no-repeat 0px center;
-            margin-top: 40px;
+            margin-top: 30px;
             margin-right: 150px;
             margin-left: 140px;
         }
@@ -256,6 +256,7 @@
                     }
                 }
             });
+
             $('#btnsave').click(function() {
                 let gamer ={
                     username :$('#username').val(),
@@ -269,6 +270,7 @@
                     windows.location.reload("12-challenge-memory-game.html");
                 },1000);
             });
+
             const checkMatch = () => {
                 if($card1.attr('class').substring(5,12) == $card2.attr('class').substring(5,12)){
                     alert('Match');
@@ -296,7 +298,6 @@
                 $('.ftime').text($time + " seconds");
                 $('.modal').removeClass('hide');
             }
-           
            
             const getTime = () => {
                 setInt = setInterval(function(){

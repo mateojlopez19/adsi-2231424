@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
         h2.title-game {
-            background: transparent url(images/juego-memoria/logojuego.png) no-repeat 0px center;
+            background: url(images/juego-memoria/logojuego.png) no-repeat 0px center;
             color:  #1a1f49;
             font-size: 60px;
             font-family: poppins, sans-serif;
             text-align: center;
             margin: 0 auto;
             text-indent: 60px;
-            width: 600px;
+            width: 700px;
         }
         figure {
             margin: 0px auto;
@@ -176,7 +176,7 @@
                     <div class="fmoves">0 moves</div>
                     <div class="ftime">0 seconds</div>
                     <input type="text" id="username" placeholder="Enter Username">
-                    <button>save</button>
+                    <button id="btnSave">save</button>
                 </div>
             </div>
             <h2 class="title-game">Focus Memory</h2>
@@ -239,23 +239,23 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $time = 0;
-            $cntMoves = 0;
+            $time      = 0;
+            $cntMoves  = 0;
             $cntClicks = 0;
-            $cntMatch = 0;
-            $cards  = document.querySelectorAll('div.card');
-            $ccards = ['card01', 'card01', 'card02', 'card02',
-                      'card03', 'card03', 'card04', 'card04',
-                      'card05', 'card05', 'card06', 'card06'];
+            $cntMatch  = 0;
+            $cards     = document.querySelectorAll('div.card');
+            $ccards    = ['card01', 'card01', 'card02', 'card02',
+                          'card03', 'card03', 'card04', 'card04',
+                          'card05', 'card05', 'card06', 'card06'];
 
             $('.card').click(function() {
-                if (!$(this).hasClass('active')){
+                //$(this).toggleClass('is-flipped');
+                if (!$(this).hasClass('active')) {
                     $(this).addClass('is-flipped active');
                     $cntClicks++;
-                    if($cntClicks == 1){
+                    if ($cntClicks == 1) {
                         $card1 = $(this);
-                    }
-                    else{
+                    } else {
                         $card2 = $(this);
                         $cntClicks = 0;
                         checkMatch();
@@ -263,53 +263,52 @@
                 }
             });
 
-            $('#btnsave').click(function() {
-                let gamer ={
-                    username :$('#username').val(),
-                    moves    : $cntMoves,
-                    time     :$time,
-                };
-                let userGamer = JSON.stringify(gamer);
-                localStorage.setItem("gamer", userGamer);
+            $('#btnSave').click(function() {
+
+                
+                $("section").click(function() {
+                    var card = $(this);  //get the card that is clicked
+                    var storage = card.attr("class");  //get the class name of this card
+                    card.fadeOut();  //hide it
+                    localStorage.setItem("local", storage);  //save the value
+                });
+
+                
                 $('.modal').addClass('hide');
-                setTimeout(function(){
-                    windows.location.reload("12-challenge-memory-game.html");
-                },1000);
+                setTimeout(function() {
+                    window.location.replace('12-challenge-memory-game.html');
+                }, 1000);
             });
 
             const checkMatch = () => {
-                if($card1.attr('class').substring(5,12) == $card2.attr('class').substring(5,12)){
-                    alert('Match');
-                    $cntMatch++;
-                    if($cntMatch==6){
-                        showresult();
-                        clearInterval($setInt);
-                        setTimeout(function(){
-                            alert("End Game... congratulations");
-                        }, 1000);
-                    }
-                }else{
-                    setTimeout(function(){
-                        $card1.removeClass('is-flipped active');
-                        $card2.removeClass('is-flipped active');
-                    }, 1000);
-                }
                 $cntMoves++;
                 $('.moves').text($cntMoves + ' moves');
-                console.log($('.card'));
+                if ($card1.attr('class').substring(5,12) ==
+                    $card2.attr('class').substring(5,12)) {
+                        $cntMatch++;
+                        if ($cntMatch == 6) {
+                            clearInterval($setInt);
+                            showResult();
+                        }
+                    } else {
+                        setTimeout(function() {
+                            $card1.removeClass('is-flipped active');
+                            $card2.removeClass('is-flipped active');
+                        }, 700);
+                    }
             }
-            
-            const showresult=()=>{
+
+            const showResult = () => {
                 $('.fmoves').text($cntMoves + " moves");
                 $('.ftime').text($time + " seconds");
                 $('.modal').removeClass('hide');
             }
-           
+
             const getTime = () => {
-                setInt = setInterval(function(){
+                $setInt = setInterval(function () {
                     $time++;
                     $('.time').text($time + ' seconds');
-                }, 1000);
+                },1000);
             }
 
             const randomCard = () => {
@@ -328,7 +327,6 @@
             randomCard();
             getTime();
         });
-        
     </script>
     
 </body>

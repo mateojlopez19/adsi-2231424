@@ -69,7 +69,7 @@
             position: absolute;
             left: 29px;
             top: 24px;
-            border: solid white;
+            /* border: solid white; */
         }
         figure.stage02 div.info {
             color: #ffffff;
@@ -81,11 +81,11 @@
             width: 30px;
         }
         figure.stage02 div#tiempo {
-            left: 87px;
-            top: 130px;
+            left: 94px;
+            top: 125px;
         }
         figure.stage02 div#puntos {
-            left: 85px;
+            left: 94px;
             top: 330px;
         }
         figure.stage02 div.link {
@@ -97,6 +97,15 @@
             left: 785px;
             top: 338px;
         }
+        figure.stage02 div.boss {
+            background: url(imgs/zelda-game/Enemigo.png) no-repeat center;
+            background-size: contain;
+            height: 80px;
+            width: 80px;
+            position: absolute;
+            left: 230px;
+            top: 338px;
+        }
         
         figure.stage.hide {
             display: none;
@@ -104,6 +113,7 @@
 
     </style>
 </head>
+
 <body>
     <main>
         <header>
@@ -120,33 +130,45 @@
                 <figure class="stage stage02 hide animate__animated animate__zoomIn">
                     <img src="imgs/zelda-game/mapa.png" class="mapa">
                     <img src="imgs/zelda-game/barra lateral.png" class="panel">
+                    <div class="boss"></div>
                     <div class="link"></div>
                     <div class="info" id="tiempo">60</div>
                     <div class="info" id="puntos">0</div>
                 </figure>
         </section>
     </main>
+    <audio id="bgMusic" src="audio/soundtrack.mp4"></audio>
 
     <script>
         const btnPlay  = document.getElementById('btn_play');
         const stage01  = document.querySelector('figure.stage01');
         const stage02  = document.querySelector('figure.stage02');
         const link = document.querySelector('div.link');
+        const boss = document.querySelector('div.boss');
+
+        const bgMusic    = document.getElementById('bgMusic');
 
         var points     = document.getElementById('puntos');
         var time       = document.getElementById('tiempo');
+
+        const posBoss  = [240, 410, 590, 780];
+        const yposBoss  = [30, 133, 236, 334];
+
 
         // Object
         const game = {
             // Attributes
             gpoints: 0,
-            gtime: 60,
+            gtime: 30,
             gpos: 780,
             ypos: 335,
+
             // Methods
             zelda: function() {
                 this.changeStage();  
                 this.countDownTime(); 
+                this.randomBoss();
+                this.playMusic();
             },
             changeStage: function() {
                 stage01.classList.add('animate__zoomOut');
@@ -157,58 +179,112 @@
             },
             countDownTime: function() {
                 let seti = setInterval(function() {
-                    if (game.gtime %10 == 0) {
-                        if (game.gtime != 60) {
-                            game.gpoints += 10;
-                            points.innerText = game.gpoints;
-                        }
-                    }
                     if (game.gtime < 1) {
-                        ///alert('The Game is Over');
                         time.innerText = '0';
                         clearInterval(seti);
+                        swal({
+                            title: "Good job!",
+                            text: "Your score is: "+ game.gpoints,
+                            icon: "success",
+                            button: true,
+                        })
+                        setInterval(function(){   
+                            window.location.reload();
+                        },3000);
+
                     } else {
                         time.innerText = parseInt(game.gtime--);
                     }
                 }, 1000);
+            },
+            moveLink: function(event) {
+                // left (37)
+                if(event.keyCode == 37) {
+                    if ( game.gpos > 260) {
+                        game.gpos -= 180;
+                        link.style.left = game.gpos + 'px';
+                        collidesWith(link, boss);
+                    }
+                }
+                // right (39)
+                if(event.keyCode == 39) {
+                    if ( game.gpos < 780){
+                        game.gpos += 180;
+                        link.style.left = game.gpos + 'px';
+                        collidesWith(link, boss);
+                    }
+                }
+                // down (40)
+                if(event.keyCode == 40) {
+                    if ( game.ypos < 335){
+                        game.ypos += 103;
+                        link.style.top = game.ypos + 'px';
+                        collidesWith(link, boss);
+                    }
+                }
+                // up (38)
+                if(event.keyCode == 38) {
+                    if ( game.ypos > 35){
+                        game.ypos -= 103;
+                        link.style.top = game.ypos + 'px';
+                        collidesWith(link, boss);
+                    }
+                }
+            },
+            randomBoss: function() {
+                let setiRand = setInterval(function() {
+                    let rnd1 = Math.floor(Math.random() * posBoss.length );
+                    let rnd2 = Math.floor(Math.random() * yposBoss.length );
+
+                    boss.style.left = posBoss[rnd1] + 'px';
+                    boss.style.top = yposBoss[rnd2] + 'px';
+                }, 600);
+            },
+            playMusic: function() {
+                bgMusic.play();
+                bgMusic.loop = true;
+                bgMusic.volume = 0.2;
+            },
+
+        };
+
+        //Colision
+        function collidesWith (link, boss) {
+        
+            element1top    = link.offsetTop;
+            element1left   = link.offsetLeft;
+            element1right  = Number(link.offsetLeft) + Number(link.offsetWidth);
+            element1bottom = Number(link.offsetTop)  + Number(link.offsetHeight);
+
+            element2top    = boss.offsetTop;
+            element2left   = boss.offsetLeft;
+            element2right  = Number(boss.offsetLeft) + Number(boss.offsetWidth);
+            element2bottom = Number(boss.offsetTop)  + Number(boss.offsetHeight);
+
+            if (element1right  > element2left   && 
+                element1left   < element2right  && 
+                element1top    < element2bottom && 
+                element1bottom > element2top ) {
+                    /* alert("Colisión: SI!"); */
+                    game.gpoints += 10;
+                    points.innerText = game.gpoints;
             }
         }
+
+        //recargar pagina
+        function reiniciar(){
+            window.location.reload();
+        }
+
         // Events
         btn_play.onclick = function() {
             game.zelda();
         }
         document.onkeydown = function(event) {
-            console.log(event.keyCode);
-            // left (37)
-            if(event.keyCode == 37) {
-                if ( game.gpos > 260) {
-                    game.gpos -= 180;
-                    link.style.left = game["gpos"] + 'px';
-                }
-            }
-            // right (39)
-            if(event.keyCode == 39) {
-                if ( game.gpos < 780){
-                    game.gpos += 180;
-                    link.style.left = game.gpos + 'px';
-                }
-            }
-            // down (40)
-            if(event.keyCode == 40) {
-                if ( game.ypos < 335){
-                    game.ypos += 103;
-                    link.style.top = game.ypos + 'px';
-                }
-            }
-            // up (38)
-            if(event.keyCode == 38) {
-                if ( game.ypos > 35){
-                    game.ypos -= 103;
-                    link.style.top = game.ypos + 'px';
-                }
-            }
+            game.moveLink(event);
         }
+        
     </script>
-     
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

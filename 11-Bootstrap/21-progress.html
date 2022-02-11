@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Images</title>
+    <title>Progress</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/all.min.css">
@@ -16,7 +16,7 @@
     <main class="container">
         <div class="row">
             <div class="col-md-12 mt-5 mb-5">
-                <h1 class="text-center">Images</h1>
+                <h1 class="text-center">Progress</h1>
                 <hr>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -28,7 +28,7 @@
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             <i class="fa fa-file-code"></i>
-                            Images
+                            Progress
                         </li>
                     </ol>
                 </nav>
@@ -36,20 +36,15 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <!--  -->
-                        <h3 class="text-muted mt-5">Responsive Images:</h3>
-                        <img src="http://via.placeholder.com/1024x400" class="img-fluid">
-                        <!--  -->
-                        <h3 class="text-muted mt-5">Image Thumbnails:</h3>
-                        <img src="http://via.placeholder.com/200x150" class="img-thumbnail">
-                        <img src="http://via.placeholder.com/200x150" class="img-thumbnail">
-                        <img src="http://via.placeholder.com/200x150" class="img-thumbnail">
-                        <img src="http://via.placeholder.com/200x150" class="img-thumbnail">
-                        <!--  -->
-                        <h3 class="text-muted mt-5">Aligning Images:</h3>
-                        <img src="http://via.placeholder.com/150x150" class="rounded-circle float-start">
-                        <img src="http://via.placeholder.com/150x150" class="rounded-circle float-end"> 
-                        <img src="http://via.placeholder.com/150x150" class="rounded-circle mx-auto d-block">
-                        <!--  -->
+                        <h3 class="text-muted mt-5">Example:</h3>
+                        <div class="progress">
+                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div>
+                        </div>
+  
+                        <h3 class="text-muted mt-5">Dinamic Progress:</h3>
+                        <div class="progress" style="height: 1.6rem">
+                         <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" id="pg" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
                     </div>
                 </div>
 
@@ -58,5 +53,19 @@
     </main>
 
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        let pg = document.getElementById('pg');
+        let vl = 0;
+        let intv = setInterval(function() {
+            if (vl < 100) {
+                vl += 1;
+                 pg.innerText = vl + "%";
+                 pg.setAttribute('aria-valuenow', vl);
+                 pg.setAttribute('style', 'width: '+vl+'%');
+            } else {
+                clearInterval(intv);
+            }
+        },100);
+    </script>
 </body>
 </html>

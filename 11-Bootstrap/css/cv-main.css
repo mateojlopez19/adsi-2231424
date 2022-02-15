@@ -19,6 +19,7 @@ body{
   background-color: var(--nav) transparent;
   height: 4em;
 }
+
 /* body first page */
 #body-info-size{
   height: 90vh;
@@ -72,12 +73,12 @@ hr{
 
 /* Footer page */
 #grid-footer{
-  height: 50vw;
+  height: 80vw;
   margin-top: -60px;
 }
 #quarter-color{
   background-color: #37385cfa;
 }
 footer-tittle{
-  height: 35vh;
+  height: 20vh;
 }

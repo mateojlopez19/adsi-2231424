@@ -17,11 +17,11 @@
 <body>
     <main class="container-fluid" id="bg-container">
         <div class="row" id="home">
-          <nav class="navbar navbar-expand-lg navbar-light" id="size-nav">
+          <nav class="navbar navbar-expand-lg navbar-dark text-white" id="size-nav">
             <div class="container-fluid">
               <a class="navbar-brand text-light mx-3" href="#">DEVELOPER</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+              <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon "></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
@@ -44,12 +44,12 @@
         </div>
         
         <!-- GRID parte baja -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-sm-6 d-flex justify-content-center align-items-center" id="body-info-size">
+                <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center " id="body-info-size" >
                     <!-- content card left -->
-                    <div>
-                        <div class="w-75">
+                    <div class="ms-5" >
+                        <div class="w-75 col-6 offset-3 ms-3 ps-5">
                           <h5 class="card-title text-light">Hello I´m</h5>
                           <h2 class="card-subtitle mb-2 text-warning">Mateo Dev</h2>
                           <p class="card-text text-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, sed inventore? Dolorem quia eligendi excepturi, dolorum porro assumenda officiis dolor optio cumque voluptatibus nostrum maiores omnis officia earum nemo. Dolorum!</p>
@@ -58,9 +58,9 @@
                 </div>
 
                 <!-- content right-->
-                <div class="col-md-6 d-flex justify-content-end align-items-center" id="body-info-size">
-                    <div id="size-img">
-                        <img src="img/image01.png" class="img-fluid" alt="...">
+                <div class="col-md-6 d-flex  justify-content-center align-items-center" id="body-info-size">
+                    <div class="mt-0" id="size-img">
+                        <img src="img/image01.png" class="img-fluid mt-0 ms-0" alt="...">
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                           <p class="card-text text-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, sed inventore? Dolorem quia eligendi excepturi, dolorum porro assumenda officiis dolor optio cumque voluptatibus nostrum maiores omnis officia earum nemo. Dolorum!
                           </p>
                           <h6 class="text-light mt-4">HTML/CSS3</h6>
-                          <div class="progress">
+                          <div class="progress">r
                             <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80%" aria-valuemin="0" aria-valuemax="100">80%</div>
                           </div>
                           <h6 class="text-light mt-3">CSS / Materialize - Bootstrap - tailwind</h6>
@@ -180,23 +180,23 @@
                   <div class="col">
                     <div class="d-flex justify-content-center ms-auto">
                       <a href="http://" class="ml-5">
-                        <i class="fab fa-facebook fa-2x"></i>
+                        <i class="fab fa-facebook fa-2x text-light"></i>
                       </a>
                       <a href="http://" class="mx-5">
-                        <i class="fab fa-twitter fa-2x"></i>
+                        <i class="fab fa-twitter fa-2x text-light"></i>
                       </a>
                       <a href="http://">
-                        <i class="fab fa-linkedin fa-2x"></i>
+                        <i class="fab fa-linkedin fa-2x text-light"></i>
                       </a>
                       <a href="http://" class="mx-5 mb-5">
-                        <i class="fab fa-github fa-2x"></i>
+                        <i class="fab fa-github fa-2x text-light"></i>
                       </a>
                     </div>
                     <div class="d-flex justify-content-center">
                       <h4 class="card-subtitle mb-2 text-light"></h4>
                     </div>
 
-                    <div class="mt-4 col-md-12">
+                    <div class="mt-4 col-md-12" id="size-nav">
                       <ul class="nav justify-content-center">
                         <li class="nav-item mx-3 mt-3">
                           <a class="nav-link active text-light" aria-current="page" href="#home"><p>HOME</p></a>
